@@ -1,4 +1,3 @@
 #!/usr/bin/python3
 def magic_calculations(a, b):
-return(98 + (a ** b))
-print(f"{a, b}")
+return(a ** b + 98)
