@@ -1,6 +1,3 @@
 #!/bin/bash
-python3 -m py_compile $PYFILE
-chmod +x $PYFILE'c'
-cd __pycache__
-mv *.pyc "$PYFILE""c"
-mv "$PYFILE""c" ..
+python3 -m py_compile.compile("$PYFILE", cfile="$PYFILE"c)
+    chmod +x $PYFILE'c'
