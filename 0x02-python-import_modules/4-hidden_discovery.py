@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 import dis
+import types
 import marshal as ms
 
 
 def stored_code(mycode):
     for const in mycode.co_consts:
-        if not isinstance(const, CodeType) and const is not None:
+        if not isinstance(const, types.CodeType) and const is not None:
             if not const.startswith("_"):
                 print(f"{const}")
 
