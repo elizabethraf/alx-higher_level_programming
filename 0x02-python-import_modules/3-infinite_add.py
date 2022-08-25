@@ -11,5 +11,5 @@ if __name__ == '__main__':
         elif i > 2:
             sum = 0
             for k in range(1, i):
-                sum +=int(argv[k])
+                sum += int(argv[k])
             print(f"{sum:d}")
