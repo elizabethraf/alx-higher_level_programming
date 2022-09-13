@@ -24,4 +24,3 @@ class Square:
         else:
             if size < 0:
                 raise ValueError("size must be >= 0")
-
