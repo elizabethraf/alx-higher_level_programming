@@ -15,6 +15,7 @@ Example:
         $ python example_google.py
 """
 
+
 class Square:
     """Defines a square"""
 
