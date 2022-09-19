@@ -5,6 +5,7 @@ Example Google style docstrings.
 
 """
 
+
 class Rectangle:
     """Defines an empty  rectangle"""
 
