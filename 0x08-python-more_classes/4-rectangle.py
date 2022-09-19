@@ -57,6 +57,14 @@ class Rectangle:
         """returns a string"""
 
         string = ""
-            for self.__width == 0 or self.__height == 0:
+        if self.__width == 0 or self.__height == 0:
+            return(string)
+
+        if string in range(self.__height):
+            if string == self.__height -1:
                 string += ("#" * self.__width)
-                    return (0)
+        return (0)
+
+    def __repr__(self):
+        """returns a string"""
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
