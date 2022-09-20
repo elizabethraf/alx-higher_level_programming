@@ -51,20 +51,25 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return (0)
         else:
-            return self.__width * 2 + self.__height * 2
+            return (self.__width * 2 + self.__height * 2)
 
     def __str__(self):
         """returns a string"""
 
         string = ""
         if self.__width == 0 or self.__height == 0:
-            return(string)
-
-        if string in range(self.__height):
-            if string == self.__height -1:
-                string += ("#" * self.__width)
-        return (0)
+            return (string)
+        else:
+            for h in range(self.__height):
+                if h == (self.__height - 1):
+                    string += (f"{'#'*self.__width}")
+                else:
+                    string += (f"{'#'*self.__width}\n")
+        return (string)
 
     def __repr__(self):
-        """returns a string"""
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        """
+        should return a string representation of the rectangle to
+        be able to recreate a new instance by using eval()
+        """
+        return (f"Rectangle({self.__width}, {self.__height})")
