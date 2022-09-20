@@ -57,6 +57,10 @@ class Rectangle:
         """returns a string"""
 
         string = ""
-            for self.__width == 0 or self.__height == 0:
-                string += ("#" * self.__width)
-                    return (0)
+        if self.__width == 0 or self.__height == 0:
+            return (string)
+        else:
+            for h in range(self.__height):
+                string += ("#" * self.__width )
+                string += "\n"
+        return (string)
