@@ -51,7 +51,7 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return (0)
         else:
-            return self.__width * 2 + self.__height * 2
+            return (self.__width * 2 + self.__height * 2)
 
     def __str__(self):
         """returns a string"""
@@ -61,5 +61,8 @@ class Rectangle:
             return (string)
         else:
             for h in range(self.__height):
-                string += ("#" * self.__width + "\n")
+                if h == (self.__height - 1):
+                    string += (f"{'#'*self.__width}")
+                else:
+                    string += (f"{'#'*self.__width}\n")
         return (string)
