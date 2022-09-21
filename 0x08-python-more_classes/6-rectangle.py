@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
@@ -39,7 +38,7 @@ class Rectangle:
         """setter for the height"""
         if type(value) != int:
             raise TypeError("height must be an integer")
-        if value < 0:
+        if self.__height < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
 
@@ -61,16 +60,15 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return(string)
 
-        if string in range(self.__height):
-            if string == self.__height -1:
+        for string in range(self.__height):
+            if string == self.__height - 1:
                 string += ("#" * self.__width)
+
+            else:
+                string += (('#' * self.__width) + '\n')
+                return (string)
         return (0)
 
     def __repr__(self):
         """returns a string"""
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
-
-    def __del__(self):
-        """ Print a message for del
-        """
-        print("Bye rectangle...")
