@@ -74,5 +74,3 @@ class Rectangle:
         """ Print a message for del
         """
         print("Bye rectangle...")
-
-

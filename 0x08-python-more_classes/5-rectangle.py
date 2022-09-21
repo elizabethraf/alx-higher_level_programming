@@ -61,7 +61,7 @@ class Rectangle:
             return(string)
 
         if string in range(self.__height):
-            if string == self.__height -1:
+            if string == self.__height - 1:
                 string += ("#" * self.__width)
         return (0)
 
