@@ -1,11 +1,14 @@
 #!/usr/bin/pyon3
 """
->>> my_function(2, 3)
-6
->>> my_function('a', 3)
-'aaa'
+>>> add_integer(1, 2)
+3
+>>> add_integer('a', 3)
+a must be an integer
+>>> add_integer(3, 'f')
+b must be an integer
+>>> add_integer(None)
+a must be an integer
 """
-
 
 def add_integer(a, b=98):
     """Define an integers"""

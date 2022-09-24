@@ -1,6 +1,21 @@
-"""
->>> my_function(1, 2)
-3
->>> my_function('a', 3)
-a must be an integer
-"""
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``add_integer`` from the ``0-add_integer`` module:
+
+   >>> add_integer = __import__('0-add_integer').add_integer
+
+Now use it:
+
+   >>> add_integer(1, 2)
+   3
+   >>> add_integer('a', 3)
+   TypeError: a must be an integer
+   >>> add_integer(3, 'f')
+   TypeError: b must be an integer
+   >>> add_integer(None)
+   TypeError: a must be an integer
