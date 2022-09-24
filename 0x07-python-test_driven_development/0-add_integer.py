@@ -1,6 +1,9 @@
 #!/usr/bin/pyon3
 """
-function that adds 2 integers.
+>>> my_function(2, 3)
+6
+>>> my_function('a', 3)
+'aaa'
 """
 
 

@@ -1,0 +1,6 @@
+"""
+>>> my_function(1, 2)
+3
+>>> my_function('a', 3)
+a must be an integer
+"""
