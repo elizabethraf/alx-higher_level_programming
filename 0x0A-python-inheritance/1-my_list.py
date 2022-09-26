@@ -10,8 +10,8 @@ class MyList(list):
     Defines List
     """
     def __init__(self):
-         """initialise object"""
-         super().__init__()
+        """initialise object"""
+        super().__init__()
 
     def print_sorted(self):
         """Print list.
