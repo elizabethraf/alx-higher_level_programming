@@ -6,5 +6,5 @@ BaseGeometry
 
 
 class BaseGeometry:
-    """   """
+    """  Class of a just a geometry """
     pass
