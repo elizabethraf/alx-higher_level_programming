@@ -15,3 +15,7 @@ class MyList(list):
         """
 
         print(list(self))
+
+    def __init__(self):
+        """initialise object"""
+        super().__init__()
