@@ -56,6 +56,24 @@ class Rectangle(Base):
             raise ValueError("height must be > 0")
         self.__height = value
 
+    @x.setter
+    def x(self, value):
+        """setter of x"""
+        if type(value) is not int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
+
+    @y.setter
+    def y(self, value):
+        """setter of y"""
+        if type(value) is not int:
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
+
     def area(self):
         """getter for the area"""
         return self.__width * self.__height
@@ -66,7 +84,7 @@ class Rectangle(Base):
               "\n".join(((" " * self.__x) + ("#" * self.__width))
                         for a in range(self.__height)))
 
-     def __str__(self):
+    def __str__(self):
         """information of the shape"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
                                                                  self.__x,
@@ -74,7 +92,7 @@ class Rectangle(Base):
                                                                  self.__width,
                                                                  self.__height)
 
-        def update(self, *args, **kwargs):
+    def update(self, *args, **kwargs):
         """updates attributes"""
         if len(args):
             if "id" in kwargs:
@@ -92,27 +110,9 @@ class Rectangle(Base):
            for key, values in kwargs.items():
               setattr(self, key, values)
 
-       def to_dictionary(self):
-        """Define dictionary"""
-        dictionary = {}
-        for index in ["id", "width", "height", "x", "y"]:
-            dictionary[index] = getattr(self, index)
-        return dictionary
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        def to_dictionary(self):
+            """Define dictionary"""
+            dictionary = {}
+            for index in ["id", "width", "height", "x", "y"]:
+                dictionary[index] = getattr(self, index)
+                return dictionary

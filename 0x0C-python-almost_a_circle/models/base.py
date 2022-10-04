@@ -35,24 +35,23 @@ class Base:
         with open(filename, 'w') as f:
             f.write(cls.to_json_string(lo))
 
-   @staticmethod
-   def from_json_string(json_string):
+    @staticmethod
+    def from_json_string(json_string):
        """Json string to dictionary"""
        if json_string is None or len(json_string) == 0:
             return []
        return json.loads(json_string)
-   
-   @classmethod
-   def load_from_file(cls):
-       """file to instance"""
-        filename = cls.__name__ + ".json"
-        b = []
-        try:
-            with open(filename, 'r') as f:
-                b = cls.from_json_string(f.read())
-            for i, e in enumerate(b):
-                b[i] = cls.create(**l[i])
-        except:
-            pass
-        return b
 
+    @classmethod
+    def load_from_file(cls):
+       """file to instance"""
+       filename = cls.__name__ + ".json"
+       b = []
+       try:
+          with open(filename, 'r') as f:
+            b = cls.from_json_string(f.read())
+          for i, e in enumerate(b):
+            b[i] = cls.create(**l[i])
+       except:
+            pass
+       return b
