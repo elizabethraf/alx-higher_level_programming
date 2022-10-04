@@ -107,8 +107,8 @@ class Rectangle(Base):
                 self.y = kwargs["y"]
 
         else:
-           for key, values in kwargs.items():
-              setattr(self, key, values)
+            for key, values in kwargs.items():
+                setattr(self, key, values)
 
         def to_dictionary(self):
             """Define dictionary"""
