@@ -1,6 +1,11 @@
 import unittest
 
 class TestStringMethods(unittest.TestCase):
+    
+  def test_no_id(self):
+      """Test id as NONE"""
+      b = Base()
+      self.assertEqual(b.id, 1)
 
   def test_upper(self):
       self.assertEqual('foo'.upper(), 'FOO')
