@@ -3,6 +3,10 @@
 Base
 
 """
+import turtle
+import csv
+from turtle import *
+
 
 
 class Base:
@@ -46,12 +50,55 @@ class Base:
     def load_from_file(cls):
        """file to instance"""
        filename = cls.__name__ + ".json"
-       b = []
+       len = []
        try:
           with open(filename, 'r') as f:
-            b = cls.from_json_string(f.read())
-          for i, e in enumerate(b):
-            b[i] = cls.create(**l[i])
+            len = cls.from_json_string(f.read())
+          for i, e in enumerate(len):
+            len[i] = cls.create(**l[i])
        except:
             pass
-       return b
+       return len
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Saving file of csv"""
+
+        b = [listToDictionary()]
+        if list_objs != None:
+            list_objs = []
+        for items in list_objs:
+            listToDictionary.append(items.to_dictionary())
+
+        with open('{}.csv'.format(cls.__name__), 'w', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerows(list_obj)
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads from csv file
+        """
+
+        len = []
+        len_dict = {}
+        with open(cls.__name__ + ".csv", mode="r") as read_file:
+            read_from = csv.DictReader(read_file)
+            for item in read_from:
+                for a, b in dict(item).items():
+                    len_dict[k] = int(v)
+                # formatting with create()
+                len.append(cls.create(**len_dict))
+        return len
+
+    def draw(list_rectangles, list_squares):
+        """Update the class Base"""
+
+        color('list_rectangles', 'list_square')
+        begin_fill()
+        while True:
+            forward(200)
+            left(170)
+            if abs(pos()) < 1:
+                break
+        end_fill()
+        done()
+
