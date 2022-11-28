@@ -11,5 +11,5 @@ if (process.argv.length > 2) {
     myword = '';
   }
 } else {
-  console.log('Missing number of occurrences');
+  console.log('Missing size');
 }
