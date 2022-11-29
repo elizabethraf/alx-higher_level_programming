@@ -4,4 +4,5 @@ class Rectangle {
     console.log('');
   }
 }
-const myRectangle = new Rectangle();
+const r1 = new Rectangle();
+console.log(r1);
