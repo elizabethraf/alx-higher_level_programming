@@ -14,13 +14,15 @@ class Rectangle {
   }
 }
 
-rotate();
-this.width = this.width;
-this.height += this.height;
-this.width -= this.height;
+rotate() {
+  ctx.rotate(angle);
+  this.width = this.width;
+  this.height += this.height;
+  this.width -= this.height;
+}
 
-double();
-this.width = this.width * 2;
-this.height = this.height * 2;
+ double();
+  this.width = this.width * 2;
+  this.height = this.height * 2;
 
 module.exports = Rectangle;
