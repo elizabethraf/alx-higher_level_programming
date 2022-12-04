@@ -9,13 +9,21 @@ from sqlalchemy.orm import sessionmaker
 from model_state import State
 
 if __name__ == "__main__":
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
-                           pool_pre_ping=True)
+    host = "localhost"
+    port = 3306
+    user = sys.argv[1]
+    passwd = sys.argv[2]
+    database = sys.argv[3]
+
+    engine = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}'.format(user,
+                                                                   passwd,
+                                                                   host, port,
+                                                                   database))
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State).order_by(State.id):
-        if "a" in state.name:
-            print("{}: {}".format(state.id, state.name))
+    states = session.query(State).order_by(State.id).filter(state.name.like('\
+                                                            %a%'))
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
     session.close()
