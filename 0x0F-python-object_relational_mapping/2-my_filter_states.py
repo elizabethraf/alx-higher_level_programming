@@ -9,11 +9,12 @@ import MySQLdb
 if __name__ == "__main__":
     database = MySQLdb.connect("localhost",
                                sys.argv[1], sys.argv[2], sys.argv[3])
-    query = f"SELECT id, name FROM states\
-            WHERE name = '{sys.argv[4]}' ORDER BY states.id ASC"
+    query = "SELECT id, name FROM states\
+            WHERE name = '{}' ORDER BY states.id ASC".format(sys.argv[4])
 
     selector = database.cursor()
     selector.execute(query)
-    selector.fetchone()
+    for state in selector.fetchone():
+        print(state)
     selector.close()
     database.close()
