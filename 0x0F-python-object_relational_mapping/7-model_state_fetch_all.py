@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+"""
+Lists all States from the database
+
+"""
+from sys import argv
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+
+if __name__ == "__main__":
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
+                           pool_pre_ping=True)
+    selector = selectormaker(bind=engine)
+    selector = selector()
+    for state in selector.query(State):
+        print("{}: {}".format(state.id, state.name))
+    selector.close()
