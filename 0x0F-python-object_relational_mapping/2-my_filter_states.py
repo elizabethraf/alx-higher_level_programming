@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     selector = database.cursor()
     selector.execute(query)
-    for state in selector.fetchone():
+    for state in selector.fetchall():
         print(state)
     selector.close()
     database.close()
