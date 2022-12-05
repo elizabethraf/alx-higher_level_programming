@@ -11,7 +11,8 @@ if __name__ == "__main__":
                                passwd=sys.argv[2], db=sys.argv[3],
                                charset="utf8")
     query = "SELECT id, name FROM states\
-            WHERE name = '{}'".format(sys.argv[4])
+            WHERE name = '{}' COLLATE utf8_bin
+            ORDER BY states.id ASC".format(sys.argv[4])
 
     selector = database.cursor()
     selector.execute(query)
