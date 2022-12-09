@@ -13,7 +13,19 @@ if __name__ == "__main__":
             WHERE name LIKE BINARY %s ORDER BY id ASC"
 
     selector = database.cursor()
-    selector.execute(query, argv[4])
+    selector.execute("""
+    SELECT id, name
+    FROM
+    states
+    WHERE
+    name = %(state_name)s
+    COLLATE utf8_bin
+    ORDER BY
+    states.id ASC
+    """, {
+        'state_name': sys.argv[4]
+        }
+    )
     for state in selector.fetchall():
         print(state)
     selector.close()
