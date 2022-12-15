@@ -9,12 +9,20 @@ import MySQLdb
 if __name__ == "__main__":
     database = MySQLdb.connect("localhost",
                                sys.argv[1], sys.argv[2], sys.argv[3])
-    query = "SELECT cities.id, cities.name, states.name\
-            FROM cities JOIN states\
-            WHERE cities.state_id = states.is"
 
     selector = database.cursor()
-    selector.execute(query)
+    selector.execute("""
+    SELECT id, name
+    FROM
+    states
+    WHERE
+    name = %(state_name)s
+    ORDER BY
+    states.id ASC
+    """, {
+        'state_name': sys.argv[4]
+        }
+    )
     for state in selector.fetchall():
         print(state)
     selector.close()
