@@ -3,7 +3,7 @@
 script that takes in a URL and an email, sends a POST request to the passed
 URL.
 """
-import urllib.parse
+from urllib.parse import urlencode
 import urllib.request
 import sys
 
@@ -11,9 +11,9 @@ import sys
 if __name__ == "__main__":
     url = sys.argv[1]
     email = {'email': sys.argv[2]}
-    data = urllib.parse.urlencode(email).encode("ascii")
+    data = urlencode(email).encode()
 
-    request = urllib.request.request(url, data)
+    req = urllib.request.Request(url, data)
     with urllib.request.urlopen(req) as response:
         message = response.read()
         print("{}".format(message.decode('utf-8')))
