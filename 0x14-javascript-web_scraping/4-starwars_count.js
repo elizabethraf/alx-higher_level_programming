@@ -1,6 +1,4 @@
-#!/t request = require('request');
-
-t request = require('request');
+#!/usr/bin/node
 
 const url = 'https://swapi-api.alx-tools.com/api/films/';
 const characterId = 18;
