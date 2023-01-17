@@ -1,23 +1,23 @@
- #!/usr/bin/node
+#!/t request = require('request');
 
-const request = require('request-promise-native');
+t request = require('request');
 
-const url = `https://swapi-api.alx-tools.com/api/films/`;
+const url = 'https://swapi-api.alx-tools.com/api/films/';
 const characterId = 18;
 
-async function getMovies(){
-    try{
-        const data = await request(url,{json: true});
-        let count = 0;
-        data.forEach(function(item) {
-            if(item.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)){
-                count++;
-            }
-        });
-        console.log(`Wedge Antilles appeared in ${count} movies`);
-    }catch(e){
-        console.log(e);
-    }
-}
-getMovies();
-
+request(url, (error, response, body) => {
+  if (!error && response.statusCode === 200) {
+    const films = JSON.parse(body).results;
+    let count = 0;
+    films.forEach(film => {
+      film.characters.forEach(character => {
+        if (character.endsWith(`/${characterId}/`)) {
+          count++;
+        }
+      });
+    });
+    console.log(`Wedge Antilles is present in ${count} films.`);
+  } else {
+    console.log('Error:', error);
+  }
+});
