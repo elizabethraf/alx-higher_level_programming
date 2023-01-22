@@ -1,23 +1,27 @@
 #!/usr/bin/node
 
-const request = require("request");
-const url = 'https://jsonplaceholder.typicode.com/todos';
-request(url, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-        const tasks = JSON.parse(body);
-        const completedTasks = tasks.filter(task => task.completed === true);
-        const users = {};
-        completedTasks.forEach(task => {
-            if (users[task.userId]) {
-                users[task.userId]++;
-            } else {
-                users[task.userId] = 1;
-            }
-        });
-        Object.keys(users).forEach(userId => {
-            console.log(`User ${userId} completed ${users[userId]} tasks.`);
-        });
-    } else {
-        console.log(`Error requesting API: ${error}`);
+const request = require('request');
+const args = process.argv;
+const requestURL = args[2];
+const list = {};
+
+request.get(requestURL, (err, res, body) => {
+  if (err) {
+    console.log(err);
+  } else {
+    const data = JSON.parse(body);
+    let user = 'default';
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].completed === true) {
+        if (!(data[i].userId in list)) {
+          user = data[i].userId;
+          list[user] = 1;
+        } else {
+          user = data[i].userId;
+          list[user] += 1;
+        }
+      }
     }
+    console.log(list);
+  }
 });
