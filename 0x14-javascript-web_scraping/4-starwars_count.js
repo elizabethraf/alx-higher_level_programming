@@ -1,29 +1,22 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
+const args = process.argv;
+const requestURL = args[2];
 
-const apiUrl = "https://swapi-api.alx-tools.com/api/films/";
-const characterId = 18;
+request.get(requestURL, (err, res, body) => {
+  if (err) {
+    console.log(err);
+  } else {
+    const allData = JSON.parse(body);
+    const results = allData.results;
+    let count = 0;
+    for (let i = 0; i < results.length; i++) {
+      for (let j = 0; j < results[i].characters.length; j++) {
+        if (results[i].characters[j].includes('18')) { count += 1; }
+      }
+    }
 
-let count = 0;
-
-request(apiUrl, (error, response, body) => {
-    if (error) {
-          console.log("Error:", error);
-              return;
-                }
-
-      const data = JSON.parse(body);
-        const films = data.results;
-
-          films.forEach(film => {
-                film.characters.forEach(character => {
-                        if (character.includes(characterId)) {
-                                  count++;
-                                        }
-                            });
-                  });
-
-            console.log(`Wedge Antilles is present in ${count} movies.`);
+    console.log(count);
+  }
 });
-
